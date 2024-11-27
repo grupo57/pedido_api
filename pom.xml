@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.fiap.soat07</groupId>
-	<artifactId>tech-challenge-01</artifactId>
+	<artifactId>tech-challenge-04-pedido</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tech-challenge-01</name>
+	<name>tech-challenge-04-pedido</name>
 	<description>Tech Challenge Fase 1</description>
 	
 	<properties>
