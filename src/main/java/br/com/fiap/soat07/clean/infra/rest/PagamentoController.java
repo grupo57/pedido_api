@@ -1,33 +1,34 @@
+/*
 package br.com.fiap.soat07.clean.infra.rest;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.soat07.clean.core.domain.entity.Pagamento;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.enumeration.MetodoPagamentoEnum;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PagamentoStatusEnum;
 import br.com.fiap.soat07.clean.core.domain.enumeration.ProvedorPagamentoEnum;
-import br.com.fiap.soat07.clean.core.exception.ComboNotFoundException;
 import br.com.fiap.soat07.clean.core.exception.PagamentoNotFoundException;
 import br.com.fiap.soat07.clean.core.exception.PedidoNotFoundException;
+import br.com.fiap.soat07.clean.infra.rest.dto.PagamentoDTO;
+import br.com.fiap.soat07.clean.infra.rest.mapper.PagamentoMapper;
 import br.com.fiap.soat07.clean.infra.service.PagamentoService;
 import br.com.fiap.soat07.clean.infra.service.PedidoService;
-import jakarta.transaction.Transactional;
-import jakarta.websocket.server.PathParam;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.annotation.*;
-
-import br.com.fiap.soat07.clean.infra.rest.mapper.PagamentoMapper;
-import br.com.fiap.soat07.clean.infra.rest.dto.PagamentoDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/pedido")
@@ -125,3 +126,4 @@ public class PagamentoController {
     }
 
 }
+*/

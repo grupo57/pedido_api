@@ -1,5 +1,14 @@
 package br.com.fiap.soat07.clean.infra.repository.mysql;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Pagamento;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
@@ -9,7 +18,6 @@ import br.com.fiap.soat07.clean.core.exception.ComboNotFoundException;
 import br.com.fiap.soat07.clean.core.exception.PedidoNotFoundException;
 import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
 import br.com.fiap.soat07.clean.infra.repository.mysql.mapper.PedidoRepositoryMapper;
-import br.com.fiap.soat07.clean.infra.repository.mysql.mapper.ProdutoRepositoryMapper;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.ComboModel;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.PedidoModel;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.ProdutoModel;
@@ -17,10 +25,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.*;
 
 @Component
 @RequiredArgsConstructor
@@ -36,8 +40,6 @@ public class PedidoRepository implements PedidoGateway {
 
     @Autowired
     private PedidoRepositoryMapper pedidoMapper;
-    @Autowired
-    private ProdutoRepositoryMapper produtoMapper;
 
 
     /**

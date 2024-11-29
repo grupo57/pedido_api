@@ -6,9 +6,12 @@ import org.mapstruct.Mapper;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.PedidoModel;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper (componentModel = "spring")
 public interface PedidoRepositoryMapper {
+	
+	static PedidoRepositoryMapper INSTANCE = Mappers.getMapper(PedidoRepositoryMapper.class);
 	
 	/**
 	 * To domain mapper

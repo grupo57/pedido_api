@@ -5,9 +5,12 @@ import org.mapstruct.Mapper;
 import br.com.fiap.soat07.clean.infra.rest.dto.PedidoDTO;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper (componentModel = "spring")
 public interface PedidoMapper {
+	
+	static PedidoMapper INSTANCE = Mappers.getMapper(PedidoMapper.class);
 	
 	/**
 	 * To domain mapper

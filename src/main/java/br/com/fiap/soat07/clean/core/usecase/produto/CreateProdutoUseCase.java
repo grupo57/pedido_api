@@ -2,11 +2,8 @@ package br.com.fiap.soat07.clean.core.usecase.produto;
 
 import br.com.fiap.soat07.clean.Utils;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
-import br.com.fiap.soat07.clean.core.exception.ProdutoDuplicadoComboException;
 import br.com.fiap.soat07.clean.core.gateway.ProdutoGateway;
 import br.com.fiap.soat07.clean.infra.rest.dto.ProdutoDTO;
-
-import java.time.OffsetDateTime;
 
 public class CreateProdutoUseCase {
 
@@ -34,7 +31,7 @@ public class CreateProdutoUseCase {
 		Produto produto = new Produto();
 		produto.setCodigo(produtoDTO.getCodigo());
 		produto.setNome(produtoDTO.getNome());
-		produto.setValor(produtoDTO.getValor());
+		produto.setValor(produtoDTO.retrieveValor());
 		produto.setTipoProduto(produtoDTO.getTipoProduto());
 		produto.setDataCriacao(Utils.now());
 		produto.setUltimaModificacao(produto.getDataCriacao());

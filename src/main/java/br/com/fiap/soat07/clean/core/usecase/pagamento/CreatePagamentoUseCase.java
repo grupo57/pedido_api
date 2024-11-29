@@ -1,15 +1,14 @@
 package br.com.fiap.soat07.clean.core.usecase.pagamento;
 
+import java.util.Optional;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Pagamento;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.enumeration.MetodoPagamentoEnum;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PagamentoStatusEnum;
-import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
 import br.com.fiap.soat07.clean.core.domain.enumeration.ProvedorPagamentoEnum;
 import br.com.fiap.soat07.clean.core.gateway.PagamentoGateway;
 import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
-
-import java.util.Optional;
 
 public class CreatePagamentoUseCase {
 

@@ -1,13 +1,10 @@
 package br.com.fiap.soat07.clean.core.usecase.pedido;
 
-import br.com.fiap.soat07.clean.Utils;
-import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
-import br.com.fiap.soat07.clean.core.exception.ComboNotFoundException;
-import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
-import br.com.fiap.soat07.clean.infra.rest.dto.PedidoDTO;
 import org.springframework.stereotype.Component;
 
-import java.time.OffsetDateTime;
+import br.com.fiap.soat07.clean.Utils;
+import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
+import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
 
 @Component
 public class UpdatePedidoUseCase {

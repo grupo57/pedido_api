@@ -1,16 +1,12 @@
 package br.com.fiap.soat07.clean.core.usecase.pagamento;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Combo;
+import java.util.Optional;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Pagamento;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
-import br.com.fiap.soat07.clean.core.domain.entity.Produto;
 import br.com.fiap.soat07.clean.core.domain.enumeration.ProvedorPagamentoEnum;
-import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
 import br.com.fiap.soat07.clean.core.exception.PedidoNotFoundException;
 import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
-
-import java.util.Collection;
-import java.util.Optional;
 
 public class SearchPagamentoUseCase {
 

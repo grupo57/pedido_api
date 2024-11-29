@@ -7,7 +7,7 @@ import br.com.fiap.soat07.clean.core.usecase.cliente.CreateClienteUseCase;
 import br.com.fiap.soat07.clean.infra.repository.mysql.ClienteRepository;
 
 @Configuration
-public class Config {
+public class UseCaseConfig {
 
     @Bean
     public CreateClienteUseCase getUserUseCase(ClienteRepository repository) {

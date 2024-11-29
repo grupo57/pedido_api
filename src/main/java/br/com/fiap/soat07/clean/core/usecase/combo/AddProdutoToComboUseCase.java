@@ -1,14 +1,14 @@
 package br.com.fiap.soat07.clean.core.usecase.combo;
 
+import java.math.BigDecimal;
+import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
 import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
 import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
-import java.util.Optional;
 
 @Component
 public class AddProdutoToComboUseCase {
@@ -33,7 +33,7 @@ public class AddProdutoToComboUseCase {
             throw new IllegalArgumentException("Já existe um produto do tipo: "+produto.getTipoProduto()+" no combo");
 
         combo.getProdutos().add(produto);
-        BigDecimal valorCombo = combo.getProdutos().stream().map(Produto::getValor).reduce(BigDecimal.ZERO, BigDecimal::add);
+        combo.getProdutos().stream().map(Produto::getValor).reduce(BigDecimal.ZERO, BigDecimal::add);
 
 
         comboGateway.save(combo);

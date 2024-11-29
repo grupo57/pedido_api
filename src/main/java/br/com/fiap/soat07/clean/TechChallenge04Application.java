@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "Lanchonete Self Service API", version = "2.0", description = "Sistema de Self Service para Lanchonete"))
-public class TechChallenge01Application {
+public class TechChallenge04Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TechChallenge01Application.class, args);
+		SpringApplication.run(TechChallenge04Application.class, args);
 	}
 
 }

@@ -1,11 +1,14 @@
 package br.com.fiap.soat07.clean.infra.service;
 
-import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
-import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
-import br.com.fiap.soat07.clean.core.usecase.pedido.*;
+import org.springframework.stereotype.Component;
+
+import br.com.fiap.soat07.clean.core.usecase.pedido.CreatePedidoUseCase;
+import br.com.fiap.soat07.clean.core.usecase.pedido.DeletePedidoUseCase;
+import br.com.fiap.soat07.clean.core.usecase.pedido.SearchPedidoUseCase;
+import br.com.fiap.soat07.clean.core.usecase.pedido.UpdatePedidoUseCase;
+import br.com.fiap.soat07.clean.core.usecase.pedido.UpdateStatusPedidoUseCase;
 import br.com.fiap.soat07.clean.infra.repository.mysql.ComboRepository;
 import br.com.fiap.soat07.clean.infra.repository.mysql.PedidoRepository;
-import org.springframework.stereotype.Component;
 
 @Component
 public class PedidoService {

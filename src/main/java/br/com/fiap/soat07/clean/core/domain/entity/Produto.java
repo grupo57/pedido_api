@@ -1,13 +1,13 @@
 package br.com.fiap.soat07.clean.core.domain.entity;
 
-import br.com.fiap.soat07.clean.Utils;
-import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import com.google.gson.Gson;
+
+import br.com.fiap.soat07.clean.Utils;
+import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
 
 public class Produto {
 
@@ -93,12 +93,12 @@ public class Produto {
 		this.dataExclusao = dataExclusao;
 	}
 
-	public boolean isExcluido() {
+	public boolean checkExcluido() {
 		return getDataExclusao() != null;
 	}
 
-	public String toString() {
-		return "Produto(id=" + this.getId() + ", codigo=" + this.getCodigo() + ", nome=" + this.getNome() + ", valor=" + this.getValor() + ", tipoProduto=" + this.getTipoProduto() + ", dataCriacao=" + this.getDataCriacao() + ", ultimaModificacao=" + this.getUltimaModificacao() + ")";
+	public String toString() {		
+		return new Gson().toJson(this);		
 	}
 
 	@Override
