@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
 import br.com.fiap.soat07.clean.core.exception.PedidoSituacaoInvalidaException;
+import br.com.fiap.soat07.clean.core.gateway.CozinhaGateway;
 import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,12 +28,15 @@ public class UpdateStatusPedidoUseCaseTest {
 	UpdateStatusPedidoUseCase useCase;
 	 
 	@Mock
-	 PedidoGateway pedidoGateway;
+	PedidoGateway pedidoGateway;
+	
+	@Mock
+	CozinhaGateway cozinhaGateway;
 	
 	@BeforeEach
 	void setup() {
 		MockitoAnnotations.openMocks(this);
-		useCase = new UpdateStatusPedidoUseCase(pedidoGateway);
+		useCase = new UpdateStatusPedidoUseCase(pedidoGateway, cozinhaGateway);
 	}
 	
 	@Test

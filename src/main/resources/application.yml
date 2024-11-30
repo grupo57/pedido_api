@@ -31,6 +31,12 @@ application:
     url: ${DATABASE_URL:jdbc:mysql://mysqldb:3306/mydb?allowPublicKeyRetrieval=true}
     platform: ${DATABASE_PLATFORM:org.hibernate.dialect.MySQL5InnoDBDialect}
     
+  atendimento:
+    base-url: ${COZINHA_URL:http://localhost:8080/cozinha}
+    cozinha:
+      incluir-pedido-path: ${INCLUIR_PEDIDO_PATH:/atendimentos}
+      url: ${application.atendimento.base-url}${application.atendimento.cozinha.incluir-pedido-path}
+    
 info:
   group-id: "br.com.fiap.soat07"
   artifact-id: "tech-challenge-04-pedido"

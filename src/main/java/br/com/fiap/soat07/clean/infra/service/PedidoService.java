@@ -2,6 +2,7 @@ package br.com.fiap.soat07.clean.infra.service;
 
 import org.springframework.stereotype.Component;
 
+import br.com.fiap.soat07.clean.core.gateway.CozinhaGateway;
 import br.com.fiap.soat07.clean.core.usecase.pedido.CreatePedidoUseCase;
 import br.com.fiap.soat07.clean.core.usecase.pedido.DeletePedidoUseCase;
 import br.com.fiap.soat07.clean.core.usecase.pedido.SearchPedidoUseCase;
@@ -19,11 +20,11 @@ public class PedidoService {
     private final UpdateStatusPedidoUseCase updateStatusPedidoUseCase;
     private final SearchPedidoUseCase searchPedidoUseCase;
 
-    public PedidoService(final ComboRepository comboGateway, final PedidoRepository pedidoGateway) {
+    public PedidoService(final ComboRepository comboGateway, final PedidoRepository pedidoGateway, final CozinhaGateway cozinhaGateway) {
         this.createPedidoUseCase = new CreatePedidoUseCase(pedidoGateway);
         this.deletePedidoUseCase = new DeletePedidoUseCase(pedidoGateway);
-        this.updatePedidoUseCase = new UpdatePedidoUseCase(pedidoGateway);
-        this.updateStatusPedidoUseCase = new UpdateStatusPedidoUseCase(pedidoGateway);
+        this.updatePedidoUseCase = new UpdatePedidoUseCase(pedidoGateway, cozinhaGateway);
+        this.updateStatusPedidoUseCase = new UpdateStatusPedidoUseCase(pedidoGateway, cozinhaGateway);
         this.searchPedidoUseCase = new SearchPedidoUseCase(pedidoGateway);
     }
 

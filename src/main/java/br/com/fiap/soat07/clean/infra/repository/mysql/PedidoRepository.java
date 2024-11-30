@@ -210,8 +210,6 @@ public class PedidoRepository implements PedidoGateway {
         entityManager.flush();
     }
 
-
-    @SuppressWarnings("unchecked")
     @Override
     public Collection<Pedido> find(int pageNumber, int pageSize) {
         String hql = """

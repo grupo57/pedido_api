@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
+import br.com.fiap.soat07.clean.core.gateway.CozinhaGateway;
 import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,12 +26,15 @@ public class UpdatePedidoUseCaseTest {
 	UpdatePedidoUseCase useCase;
 	 
 	@Mock
-	 PedidoGateway pedidoGateway;
+	PedidoGateway pedidoGateway;
+	
+	@Mock
+	CozinhaGateway cozinhaGateway;
 	
 	@BeforeEach
 	void setup() {
 		MockitoAnnotations.openMocks(this);
-		useCase = new UpdatePedidoUseCase(pedidoGateway);
+		useCase = new UpdatePedidoUseCase(pedidoGateway, cozinhaGateway);
 	}
 	
 	@Test
@@ -39,6 +43,18 @@ public class UpdatePedidoUseCaseTest {
 		
 		assertNotNull(useCase.execute(mockPedido(), mockPedido()));
 		verify( pedidoGateway, times(1)).save(any(Pedido.class));
+	}	
+	
+	@Test
+	void shouldTestUpdatePedidoUseCaseWithStatusPago() {		
+		when(pedidoGateway.save(any(Pedido.class))).thenReturn(mockPedido());	
+		when(cozinhaGateway.send(any(Pedido.class))).thenReturn(Boolean.TRUE);
+		
+		Pedido pedido = mockPedido();
+		pedido.setStatus(PedidoStatusEnum.PAGO);
+		assertNotNull(useCase.execute(mockPedido(), pedido));
+		verify( pedidoGateway, times(1)).save(any(Pedido.class));
+		verify( cozinhaGateway, times(1)).send(any(Pedido.class));
 	}	
 	
 	private Pedido mockPedido() {
