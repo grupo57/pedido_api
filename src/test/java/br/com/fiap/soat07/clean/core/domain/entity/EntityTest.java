@@ -1,14 +1,15 @@
 package br.com.fiap.soat07.clean.core.domain.entity;
 
-import static com.google.code.beanmatchers.BeanMatchers.*;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEquals;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCode;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetters;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.ZoneOffset;
-import java.util.concurrent.ThreadLocalRandom;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,6 @@ public class EntityTest {
 	void shouldTestHasValidGettersAndSetters() {
 
 		assertThat(Combo.class, hasValidGettersAndSetters());
-		assertThat(Pagamento.class, hasValidGettersAndSetters());
 		assertThat(Pedido.class, hasValidGettersAndSetters());
 		assertThat(Produto.class, hasValidGettersAndSetters());
 		assertThat(Cliente.class, hasValidGettersAndSetters());
@@ -58,7 +58,6 @@ public class EntityTest {
 	void shouldTestHasValidHashCode() {
 
 		assertThat(Combo.class, hasValidBeanHashCode());
-		assertThat(Pagamento.class, hasValidBeanHashCode());
 		assertThat(Pedido.class, hasValidBeanHashCode());
 		//assertThat(Produto.class, hasValidBeanHashCode());
 		assertThat(Cliente.class, hasValidBeanHashCode());
@@ -68,9 +67,6 @@ public class EntityTest {
 	void shouldTestHasValidBeanEquals() {
 
 		assertThat(Combo.class, hasValidBeanEquals());
-		assertThat(Pagamento.class, hasValidBeanEquals());
-		//assertThat(Pedido.class, hasValidBeanEquals());
-		//assertThat(Produto.class, hasValidBeanEquals());
 		assertThat(Cliente.class, hasValidBeanEquals());
 	}
 
@@ -78,9 +74,6 @@ public class EntityTest {
 	void shouldTestHasValidToString() {
 
 		assertEquals(new Combo().toString(), new Combo().toString());
-		assertEquals(new Pagamento().toString(), new Pagamento().toString());
-		//assertEquals(new Pedido().toString(), new Pedido().toString());
-		//assertEquals(new Produto().toString(), new Produto().toString());
 		assertEquals(new Cliente().toString(), new Cliente().toString());
 	}
 

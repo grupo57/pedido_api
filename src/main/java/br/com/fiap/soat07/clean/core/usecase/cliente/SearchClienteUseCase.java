@@ -55,6 +55,12 @@ public class SearchClienteUseCase {
 		return clienteGateway.findByCodigo(codigo);
 	}
 
+	/**
+	 * 
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return
+	 */
 	public Collection<Cliente> find(int pageNumber, int pageSize) {
 		return clienteGateway.find(pageNumber, pageSize);
 	}

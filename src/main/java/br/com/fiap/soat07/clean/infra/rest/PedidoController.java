@@ -59,11 +59,11 @@ public class PedidoController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = 
               { @Content(mediaType = "application/json", schema = 
                 @Schema(implementation = ErrorResponse.class)) }) })
-    @PostMapping(value = "/{id}")
+    @PostMapping(value = "/{comboId}")
     @Transactional
-    public ResponseEntity<PedidoDTO> createPedido(@PathVariable final Long id) {
+    public ResponseEntity<PedidoDTO> createPedido(@PathVariable final Long comboId) {
 
-        Combo combo = comboService.getSearchComboUseCase().findById(id).orElseThrow(() -> new ComboNotFoundException(id));
+        Combo combo = comboService.getSearchComboUseCase().findById(comboId).orElseThrow(() -> new ComboNotFoundException(comboId));
         Pedido pedido = pedidoService.getCreatePedidoUseCase().execute(combo);
     	return ResponseEntity.ok(mapper.toDTO(pedido));
 	

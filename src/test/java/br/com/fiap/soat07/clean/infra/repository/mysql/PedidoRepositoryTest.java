@@ -31,7 +31,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
-import br.com.fiap.soat07.clean.core.domain.entity.Pagamento;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
@@ -94,39 +93,6 @@ public class PedidoRepositoryTest {
 	}
 	
 	@Test
-	void shouldTestFindPagamento() {		
-
-		when(entityManager.createQuery(anyString(), eq(PedidoModel.class))).thenReturn(typedQuery);
-		when(typedQuery.setParameter(anyString(), any())).thenReturn(typedQuery);
-		when(typedQuery.getSingleResult()).thenReturn(mockPedidoModel());
-		
-		
-		assertNotNull(repository.findPagamento(ProvedorPagamentoEnum.MERCADO_PAGO, "test"));
-	}
-	
-	@Test
-	void shouldTestFindPagamentoNoResultException() {		
-
-		when(entityManager.createQuery(anyString(), eq(PedidoModel.class))).thenReturn(typedQuery);
-		when(typedQuery.setParameter(anyString(), any())).thenReturn(typedQuery);
-		when(typedQuery.getSingleResult()).thenThrow(NoResultException.class);
-		
-		
-		assertEquals(Optional.empty(), repository.findPagamento(ProvedorPagamentoEnum.MERCADO_PAGO, "test"));
-	}
-	
-	@Test
-	void shouldTestFindPagamentoByPedido() {		
-
-		when(entityManager.createQuery(anyString(), eq(PedidoModel.class))).thenReturn(typedQuery);
-		when(typedQuery.setParameter(anyString(), any())).thenReturn(typedQuery);
-		when(typedQuery.getSingleResult()).thenReturn(mockPedidoModel());
-		
-		
-		assertNotNull(repository.findPagamento(mockPedido()));
-	}
-	
-	@Test
 	void shouldTestFindPagamentoByCombo() {		
 
 		when(entityManager.createQuery(anyString(), eq(PedidoModel.class))).thenReturn(typedQuery);
@@ -177,29 +143,6 @@ public class PedidoRepositoryTest {
 	}
 	
 	@Test
-	void shouldTestSavePedidoPagamentoClientNotFound() {	
-
-		doNothing().when(entityManager).persist(any(PedidoModel.class));
-		
-		Pedido pedido = mockPedido();
-		pedido.setId(null);
-		repository.save(pedido, mockPagamento());
-		verify( entityManager, times(1)).persist(any(PedidoModel.class));
-	}
-	
-	@Test
-	void shouldTestSavePedidoPagamentoClientFound() {	
-
-		when(entityManager.createQuery(anyString(), eq(PedidoModel.class))).thenReturn(typedQuery);
-		when(typedQuery.setParameter(anyString(), any())).thenReturn(typedQuery);
-		when(typedQuery.getSingleResult()).thenReturn(mockPedidoModel());
-		when(entityManager.merge(any(PedidoModel.class))).thenReturn(mockPedidoModel());
-		
-		repository.save(mockPedido(), mockPagamento());
-		verify( entityManager, times(1)).merge(any(PedidoModel.class));
-	}
-	
-	@Test
 	void shouldTestDelete() {		
 
 		when(entityManager.createQuery(anyString(), eq(PedidoModel.class))).thenReturn(typedQuery);
@@ -234,11 +177,6 @@ public class PedidoRepositoryTest {
 		
 		assertNotNull(repository.find(1, 10));
 		
-	}
-
-	private Pagamento mockPagamento() {
-		Pagamento pagamento = new Pagamento();
-		return pagamento;
 	}
 
 	private List<PedidoModel> mockPedidoModelLista() {
