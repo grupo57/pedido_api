@@ -1,10 +1,10 @@
-name: SonarQube Cloud
+name: Code Quality and Analysis
 on:
-  push:
-    branches:
-      - master
   pull_request:
     types: [opened, synchronize, reopened]
+  # push:
+  #   branches:
+  #     - main
 jobs:
   build:
     name: Build and analyze
