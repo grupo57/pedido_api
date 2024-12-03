@@ -3,20 +3,16 @@ package br.com.fiap.soat07.clean.core.domain.entity;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
-import org.springframework.util.ObjectUtils;
 
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 public class Pedido {
 	
@@ -42,7 +38,7 @@ public class Pedido {
 		return produtos;
 	}
 
-	public BigDecimal getValor() {
+	public BigDecimal retrieveValor() {
 		if (getProdutos() == null)
 			return BigDecimal.ZERO.setScale(2, RoundingMode.HALF_EVEN);
 

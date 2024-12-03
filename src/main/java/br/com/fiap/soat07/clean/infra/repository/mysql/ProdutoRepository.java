@@ -1,5 +1,21 @@
 package br.com.fiap.soat07.clean.infra.repository.mysql;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import org.hibernate.query.TupleTransformer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.soat07.clean.Utils;
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
@@ -8,21 +24,11 @@ import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
 import br.com.fiap.soat07.clean.core.exception.ProdutoNotFoundException;
 import br.com.fiap.soat07.clean.core.gateway.ProdutoGateway;
 import br.com.fiap.soat07.clean.infra.repository.mysql.mapper.ProdutoRepositoryMapper;
-import br.com.fiap.soat07.clean.infra.repository.mysql.model.ComboModel;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.ProdutoModel;
-import jakarta.persistence.*;
-import org.hibernate.Session;
-import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
-import org.hibernate.query.TupleTransformer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.*;
-import java.util.stream.Collectors;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 @Repository
 public class ProdutoRepository implements ProdutoGateway {
@@ -97,7 +103,7 @@ public class ProdutoRepository implements ProdutoGateway {
                     .dataCriacao(dataCriacao)
                     .ultimaModificacao(dataCriacao)
                     .build();
-            entityManager.persist(model);
+            entityManager.persist(produtoModel);
         } else {
             model = _findById(produto.getId()).orElseThrow(() -> new ProdutoNotFoundException(produto.getId()));
             model.setCodigo(produto.getCodigo());

@@ -1,13 +1,12 @@
 package br.com.fiap.soat07.clean.core.gateway;
 
+import java.util.Collection;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
 
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import java.util.Collection;
 
 public interface ComboGateway {
 

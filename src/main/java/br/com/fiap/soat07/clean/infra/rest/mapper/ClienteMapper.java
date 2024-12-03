@@ -1,13 +1,15 @@
 package br.com.fiap.soat07.clean.infra.rest.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-import br.com.fiap.soat07.clean.infra.rest.dto.ClienteDTO;
 import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
-import org.mapstruct.Mapping;
+import br.com.fiap.soat07.clean.infra.rest.dto.ClienteDTO;
 
 @Mapper (componentModel = "spring")
 public interface ClienteMapper {
+	
+	static ClienteMapper INSTANCE = Mappers.getMapper(ClienteMapper.class);
 	
 	/**
 	 * To domain mapper

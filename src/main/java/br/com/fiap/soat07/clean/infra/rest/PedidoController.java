@@ -1,14 +1,31 @@
 package br.com.fiap.soat07.clean.infra.rest;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
 import br.com.fiap.soat07.clean.core.exception.ComboNotFoundException;
 import br.com.fiap.soat07.clean.core.exception.PedidoNotFoundException;
-import br.com.fiap.soat07.clean.infra.service.ComboService;
-import br.com.fiap.soat07.clean.infra.service.PedidoService;
 import br.com.fiap.soat07.clean.infra.rest.dto.PedidoDTO;
 import br.com.fiap.soat07.clean.infra.rest.mapper.PedidoMapper;
+import br.com.fiap.soat07.clean.infra.service.ComboService;
+import br.com.fiap.soat07.clean.infra.service.PedidoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,15 +34,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/pedido")
@@ -51,11 +59,11 @@ public class PedidoController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = 
               { @Content(mediaType = "application/json", schema = 
                 @Schema(implementation = ErrorResponse.class)) }) })
-    @PostMapping(value = "/{id}")
+    @PostMapping(value = "/{comboId}")
     @Transactional
-    public ResponseEntity<PedidoDTO> createPedido(@PathVariable final Long id) {
+    public ResponseEntity<PedidoDTO> createPedido(@PathVariable final Long comboId) {
 
-        Combo combo = comboService.getSearchComboUseCase().findById(id).orElseThrow(() -> new ComboNotFoundException(id));
+        Combo combo = comboService.getSearchComboUseCase().findById(comboId).orElseThrow(() -> new ComboNotFoundException(comboId));
         Pedido pedido = pedidoService.getCreatePedidoUseCase().execute(combo);
     	return ResponseEntity.ok(mapper.toDTO(pedido));
 	
@@ -178,7 +186,6 @@ public class PedidoController {
         if (page < 1)
             page = 1;
 
-        Pageable pageable = PageRequest.of(page, size);
     	return ResponseEntity.ok(pedidoService.getSearchPedidoUseCase().find(page, size).stream().map(mapper::toDTO).toList());
 	
     }

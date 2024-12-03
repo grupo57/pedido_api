@@ -1,5 +1,22 @@
 package br.com.fiap.soat07.clean.infra.rest;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
 import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
 import br.com.fiap.soat07.clean.infra.rest.dto.ProdutoDTO;
@@ -13,16 +30,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/produto")
@@ -103,7 +110,7 @@ public class ProdutoController {
             return ResponseEntity.ok().build();
 
         Produto produto = produtoOp.get();
-        if (produto.isExcluido())
+        if (produto.checkExcluido())
             return ResponseEntity.ok().build();
 
         produtoService.getDeleteProdutoUseCase().execute(produtoOp.get());
@@ -154,7 +161,6 @@ public class ProdutoController {
         if (page < 1)
             page = 1;
 
-        Pageable pageable = PageRequest.of(page, size);
         Collection<Produto> result = produtoService.getSearchProdutoUseCase().find(tipoProduto, page, size);
     	return ResponseEntity.ok(result.stream().map(model -> mapper.toDTO(model)).toList());
     }
