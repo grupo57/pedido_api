@@ -1,12 +1,15 @@
 package br.com.fiap.soat07.clean.infra.rest.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-import br.com.fiap.soat07.clean.infra.rest.dto.ComboDTO;
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
+import br.com.fiap.soat07.clean.infra.rest.dto.ComboDTO;
 
 @Mapper (componentModel = "spring")
 public interface ComboMapper {
+	
+	static ComboMapper INSTANCE = Mappers.getMapper(ComboMapper.class);
 	
 	/**
 	 * To domain mapper

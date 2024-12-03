@@ -1,5 +1,13 @@
 package br.com.fiap.soat07.clean.core.usecase.combo;
 
+import static br.com.fiap.soat07.clean.Utils.hasProdutoDuplicates;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
@@ -11,15 +19,6 @@ import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
 import br.com.fiap.soat07.clean.core.gateway.ProdutoGateway;
 import br.com.fiap.soat07.clean.infra.rest.dto.CreateComboDTO;
 import br.com.fiap.soat07.clean.infra.rest.dto.ProdutoDTO;
-import br.com.fiap.soat07.clean.infra.rest.mapper.ProdutoMapper;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static br.com.fiap.soat07.clean.Utils.hasProdutoDuplicates;
 
 @Component
 public class CreateComboUseCase {

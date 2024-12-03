@@ -1,14 +1,14 @@
 package br.com.fiap.soat07.clean.infra.service;
 
+import org.springframework.stereotype.Component;
+
 import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
-import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
 import br.com.fiap.soat07.clean.core.gateway.ProdutoGateway;
 import br.com.fiap.soat07.clean.core.usecase.combo.CreateComboUseCase;
 import br.com.fiap.soat07.clean.core.usecase.combo.DeleteComboUseCase;
 import br.com.fiap.soat07.clean.core.usecase.combo.SearchComboUseCase;
 import br.com.fiap.soat07.clean.core.usecase.combo.UpdateComboUseCase;
 import br.com.fiap.soat07.clean.infra.repository.mysql.ComboRepository;
-import org.springframework.stereotype.Component;
 
 @Component
 public class ComboService {

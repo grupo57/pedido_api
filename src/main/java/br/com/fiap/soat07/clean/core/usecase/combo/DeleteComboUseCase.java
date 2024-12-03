@@ -1,11 +1,9 @@
 package br.com.fiap.soat07.clean.core.usecase.combo;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
-import br.com.fiap.soat07.clean.core.domain.entity.Combo;
-import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
-import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import br.com.fiap.soat07.clean.core.domain.entity.Combo;
+import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
 
 @Component
 public class DeleteComboUseCase {

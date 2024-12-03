@@ -2,7 +2,6 @@ package br.com.fiap.soat07.clean.core.usecase.cliente;
 
 import br.com.fiap.soat07.clean.Utils;
 import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
-import br.com.fiap.soat07.clean.core.exception.ClienteNotFoundException;
 import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
 
 public class DeleteClienteUseCase {
@@ -18,7 +17,7 @@ public class DeleteClienteUseCase {
             throw new IllegalArgumentException();
 
         cliente.setDataExclusao(Utils.now());
-        clienteGateway.save(cliente);
+        clienteGateway.delete(cliente);
     }
 
 }

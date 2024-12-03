@@ -1,24 +1,26 @@
 package br.com.fiap.soat07.clean.infra.repository.mysql;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
 import br.com.fiap.soat07.clean.core.exception.ClienteNotFoundException;
 import br.com.fiap.soat07.clean.core.exception.ComboNotFoundException;
-import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
 import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
 import br.com.fiap.soat07.clean.infra.repository.mysql.mapper.ComboRepositoryMapper;
-import br.com.fiap.soat07.clean.infra.repository.mysql.mapper.ProdutoRepositoryMapper;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.ClienteModel;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.ComboModel;
 import br.com.fiap.soat07.clean.infra.repository.mysql.model.ProdutoModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.util.*;
 
 @Repository
 public class ComboRepository implements ComboGateway {

@@ -2,6 +2,7 @@ package br.com.fiap.soat07.clean.infra.repository.mysql.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
@@ -9,6 +10,8 @@ import br.com.fiap.soat07.clean.infra.repository.mysql.model.ComboModel;
 
 @Mapper (componentModel = "spring")
 public abstract class ComboRepositoryMapper {
+	
+	public static ComboRepositoryMapper INSTANCE = Mappers.getMapper(ComboRepositoryMapper.class);
 	
 	@Autowired
     public ProdutoRepositoryMapper produtoMapper;

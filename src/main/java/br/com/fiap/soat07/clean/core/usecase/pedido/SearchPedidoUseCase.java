@@ -1,12 +1,12 @@
 package br.com.fiap.soat07.clean.core.usecase.pedido;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Combo;
-import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
-import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
+import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
+import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
 
 @Component
 public class SearchPedidoUseCase {

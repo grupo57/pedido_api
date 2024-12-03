@@ -1,16 +1,12 @@
 package br.com.fiap.soat07.clean.core.usecase.combo;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Combo;
-import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
-import br.com.fiap.soat07.clean.core.domain.entity.Produto;
-import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
-import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
-import br.com.fiap.soat07.clean.core.gateway.ProdutoGateway;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
+import br.com.fiap.soat07.clean.core.domain.entity.Combo;
+import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
 
 @Component
 public class SearchComboUseCase {

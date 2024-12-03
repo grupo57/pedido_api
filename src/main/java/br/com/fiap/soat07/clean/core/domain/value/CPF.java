@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Optional;
 
+import br.com.fiap.soat07.clean.core.exception.CPFInvalidoException;
+
 public final class CPF implements Comparable<CPF>, Serializable {
     private static final long serialVersionUID = 1L;
     public static final CPF NULL = new CPF();

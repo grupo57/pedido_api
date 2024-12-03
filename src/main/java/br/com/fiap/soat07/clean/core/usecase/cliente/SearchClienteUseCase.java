@@ -1,13 +1,12 @@
 package br.com.fiap.soat07.clean.core.usecase.cliente;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
-import br.com.fiap.soat07.clean.core.domain.entity.Combo;
-import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
-import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
+import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
+import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
 
 @Component
 public class SearchClienteUseCase {
@@ -56,6 +55,12 @@ public class SearchClienteUseCase {
 		return clienteGateway.findByCodigo(codigo);
 	}
 
+	/**
+	 * 
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return
+	 */
 	public Collection<Cliente> find(int pageNumber, int pageSize) {
 		return clienteGateway.find(pageNumber, pageSize);
 	}

@@ -1,20 +1,20 @@
 package br.com.fiap.soat07.clean.infra.repository.mysql;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
 import br.com.fiap.soat07.clean.core.exception.ClienteNotFoundException;
 import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
 import br.com.fiap.soat07.clean.infra.repository.mysql.mapper.ClienteRepositoryMapper;
+import br.com.fiap.soat07.clean.infra.repository.mysql.model.ClienteModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-
-import br.com.fiap.soat07.clean.infra.repository.mysql.model.ClienteModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class ClienteRepository implements ClienteGateway {

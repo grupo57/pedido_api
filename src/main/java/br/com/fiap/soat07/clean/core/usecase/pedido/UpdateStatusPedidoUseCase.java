@@ -3,14 +3,18 @@ package br.com.fiap.soat07.clean.core.usecase.pedido;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
 import br.com.fiap.soat07.clean.core.exception.PedidoSituacaoInvalidaException;
+import br.com.fiap.soat07.clean.core.gateway.CozinhaGateway;
 import br.com.fiap.soat07.clean.core.gateway.PedidoGateway;
 
 public class UpdateStatusPedidoUseCase {
 
     private final PedidoGateway pedidoGateway;
+    
+    private final CozinhaGateway cozinhaGateway;
 
-    public UpdateStatusPedidoUseCase(PedidoGateway pedidoGateway) {
+    public UpdateStatusPedidoUseCase(PedidoGateway pedidoGateway, CozinhaGateway cozinhaGateway) {
         this.pedidoGateway = pedidoGateway;
+        this.cozinhaGateway = cozinhaGateway;
     }
 
     public Pedido execute(Pedido pedido, PedidoStatusEnum status) {
@@ -25,6 +29,10 @@ public class UpdateStatusPedidoUseCase {
 
         pedido.setStatus(status);
         pedido = pedidoGateway.save(pedido);
+        
+        if(pedido.getStatus() == PedidoStatusEnum.PAGO) {
+        	cozinhaGateway.send(pedido); // No caso de retorno false, implementar política de retentativas de envio
+        }
 
         return pedido;
     }
