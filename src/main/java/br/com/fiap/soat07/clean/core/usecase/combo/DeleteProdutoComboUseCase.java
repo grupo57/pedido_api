@@ -1,14 +1,10 @@
 package br.com.fiap.soat07.clean.core.usecase.combo;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Combo;
-import br.com.fiap.soat07.clean.core.domain.entity.Produto;
-import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
-import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.util.Optional;
+import br.com.fiap.soat07.clean.core.domain.entity.Combo;
+import br.com.fiap.soat07.clean.core.domain.entity.Produto;
+import br.com.fiap.soat07.clean.core.gateway.ComboGateway;
 
 @Component
 public class DeleteProdutoComboUseCase {

@@ -1,11 +1,9 @@
 package br.com.fiap.soat07.clean.core.gateway;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.Collection;
 import java.util.Optional;
+
+import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
 
 public interface ClienteGateway {
 

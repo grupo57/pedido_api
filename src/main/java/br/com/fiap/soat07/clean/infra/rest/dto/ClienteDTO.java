@@ -1,16 +1,14 @@
 package br.com.fiap.soat07.clean.infra.rest.dto;
 
-import br.com.fiap.soat07.clean.core.domain.value.CPF;
-import br.com.fiap.soat07.clean.infra.rest.presenter.CPFDeserializer;
-import br.com.fiap.soat07.clean.infra.rest.presenter.CPFSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

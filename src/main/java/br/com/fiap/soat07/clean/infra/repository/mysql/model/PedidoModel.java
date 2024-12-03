@@ -3,23 +3,41 @@ package br.com.fiap.soat07.clean.infra.repository.mysql.model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import br.com.fiap.soat07.clean.core.domain.entity.Produto;
-import br.com.fiap.soat07.clean.core.domain.enumeration.MetodoPagamentoEnum;
-import br.com.fiap.soat07.clean.core.domain.enumeration.PagamentoStatusEnum;
-import br.com.fiap.soat07.clean.core.domain.enumeration.ProvedorPagamentoEnum;
-import jakarta.persistence.*;
-import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.util.ObjectUtils;
 
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import br.com.fiap.soat07.clean.core.domain.enumeration.MetodoPagamentoEnum;
+import br.com.fiap.soat07.clean.core.domain.enumeration.PagamentoStatusEnum;
 import br.com.fiap.soat07.clean.core.domain.enumeration.PedidoStatusEnum;
+import br.com.fiap.soat07.clean.core.domain.enumeration.ProvedorPagamentoEnum;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Builder
@@ -86,7 +104,7 @@ public class PedidoModel {
 	private LocalDateTime transactionTime;
 
 
-	public BigDecimal getValor() {
+	public BigDecimal retrieveValor() {
 		if (getProdutos() == null)
 			return BigDecimal.ZERO.setScale(2, RoundingMode.HALF_EVEN);
 
@@ -98,13 +116,13 @@ public class PedidoModel {
 
 	@Override
 	public String toString() {
-		return "PedidoModel{" +
-				"id=" + id +
-				", codigo='" + codigo + '\'' +
-				", nomeCliente='" + nomeCliente + '\'' +
-				", status=" + status +
-				", valor=" + valor +
-				'}';
+		Gson GSON = new GsonBuilder() //
+        .registerTypeAdapter(LocalDateTime.class, LocalDateTimeDeserializer.INSTANCE) //
+        .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY) //
+        .setPrettyPrinting() //
+        .create();
+
+		return GSON.toJson(this);
 	}
 
 	@Override

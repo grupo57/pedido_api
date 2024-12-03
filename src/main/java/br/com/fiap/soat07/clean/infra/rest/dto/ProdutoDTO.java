@@ -6,10 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.fiap.soat07.clean.core.domain.enumeration.TipoProdutoEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,7 +23,7 @@ public class ProdutoDTO {
 	private BigDecimal valor;
 	private TipoProdutoEnum tipoProduto;
 
-	public BigDecimal getValor() {
+	public BigDecimal retrieveValor() {
 		if (valor == null)
 			return BigDecimal.ZERO;
 		return valor;

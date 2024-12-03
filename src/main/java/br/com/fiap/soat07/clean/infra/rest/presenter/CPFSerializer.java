@@ -1,12 +1,12 @@
 package br.com.fiap.soat07.clean.infra.rest.presenter;
 
-import br.com.fiap.soat07.clean.core.domain.value.CPF;
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-import java.io.IOException;
+import br.com.fiap.soat07.clean.core.domain.value.CPF;
 
 public class CPFSerializer extends JsonSerializer<CPF> {
     @Override

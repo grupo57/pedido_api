@@ -5,8 +5,6 @@ import br.com.fiap.soat07.clean.core.domain.entity.Produto;
 import br.com.fiap.soat07.clean.core.gateway.ProdutoGateway;
 import br.com.fiap.soat07.clean.infra.rest.dto.ProdutoDTO;
 
-import java.time.OffsetDateTime;
-
 public class UpdateProdutoUseCase {
 
 	private final ProdutoGateway produtoGateway;
@@ -24,7 +22,7 @@ public class UpdateProdutoUseCase {
 	public Produto execute(Produto produto, ProdutoDTO produtoDTO) {
 		produto.setCodigo(produtoDTO.getCodigo());
 		produto.setNome(produtoDTO.getNome());
-		produto.setValor(produtoDTO.getValor());
+		produto.setValor(produtoDTO.retrieveValor());
 		produto.setUltimaModificacao(Utils.now());
 
 		produto = produtoGateway.save(produto);

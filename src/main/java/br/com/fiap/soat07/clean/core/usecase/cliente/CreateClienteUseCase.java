@@ -5,8 +5,6 @@ import br.com.fiap.soat07.clean.core.domain.entity.Cliente;
 import br.com.fiap.soat07.clean.core.gateway.ClienteGateway;
 import br.com.fiap.soat07.clean.infra.rest.dto.ClienteDTO;
 
-import java.time.OffsetDateTime;
-
 public class CreateClienteUseCase {
 
     private final ClienteGateway clienteGateway;

@@ -16,7 +16,7 @@ public class IdentificacaoDoClienteDTO {
 	private String nome;
 	private String cpf;
 
-	public boolean isAnonimo() {
+	public boolean clienteIsAnonimo() {
 		return id == null;
 	}
 
