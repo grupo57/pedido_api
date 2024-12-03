@@ -112,6 +112,7 @@ public class PedidoRepository implements PedidoGateway {
             model.setUltimaModificacao(pedido.getUltimaModificacao());
             model.setProdutos(produtosModel);
             model.setStatus(pedido.getStatus());
+            model.setCodigo(pedido.getCodigo());
 
             entityManager.persist(model);
 
@@ -121,6 +122,7 @@ public class PedidoRepository implements PedidoGateway {
             model.setUltimaModificacao(pedido.getUltimaModificacao());
             model.setProdutos(produtosModel);
             model.setStatus(pedido.getStatus());
+            model.setCodigo(pedido.getCodigo());
 
             entityManager.merge(model);
         }

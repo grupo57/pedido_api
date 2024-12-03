@@ -34,7 +34,7 @@ public class CreatePedidoUseCase {
 
 		Pedido pedido = new Pedido();
 		pedido.setCombo(combo);
-		pedido.setCodigo(getCodigoProduto());
+		pedido.setCodigo(getCodigoPedido());
 		pedido.setNomeCliente(combo.getCliente().getNome());
 		pedido.setStatus(PedidoStatusEnum.INICIADO);
 		for (Produto produto : combo.getProdutos())
@@ -46,7 +46,7 @@ public class CreatePedidoUseCase {
 	}
 
 
-	private String getCodigoProduto() {
+	private String getCodigoPedido() {
 		return String.format("%s%s","COD",UUID.randomUUID().toString().substring(0, 4));
 	}
 
