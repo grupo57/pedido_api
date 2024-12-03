@@ -4,8 +4,6 @@ import static br.com.fiap.soat07.clean.Utils.hasProdutoDuplicates;
 
 import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
-
 import br.com.fiap.soat07.clean.core.domain.entity.Combo;
 import br.com.fiap.soat07.clean.core.domain.entity.Pedido;
 import br.com.fiap.soat07.clean.core.domain.entity.Produto;
@@ -36,9 +34,7 @@ public class CreatePedidoUseCase {
 
 		Pedido pedido = new Pedido();
 		pedido.setCombo(combo);
-		if (StringUtils.isEmpty(pedido.getCodigo())) {
-			pedido.setCodigo(getCodigoProduto());
-		}		
+		pedido.setCodigo(getCodigoProduto());
 		pedido.setNomeCliente(combo.getCliente().getNome());
 		pedido.setStatus(PedidoStatusEnum.INICIADO);
 		for (Produto produto : combo.getProdutos())
@@ -51,7 +47,7 @@ public class CreatePedidoUseCase {
 
 
 	private String getCodigoProduto() {
-		return String.format("%s%s","COD",UUID.randomUUID().toString().substring(0, 3));
+		return String.format("%s%s","COD",UUID.randomUUID().toString().substring(0, 4));
 	}
 
 }
