@@ -32,7 +32,7 @@ application:
     platform: ${DATABASE_PLATFORM:org.hibernate.dialect.MySQL5InnoDBDialect}
     
   atendimento:
-    base-url: ${COZINHA_URL:http://localhost:8080/producao}
+    base-url: ${COZINHA_URL:http://host.docker.internal:8080/producao}
     cozinha:
       incluir-pedido-path: ${INCLUIR_PEDIDO_PATH:/atendimentos}
       url: ${application.atendimento.base-url}${application.atendimento.cozinha.incluir-pedido-path}
